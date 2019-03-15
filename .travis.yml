@@ -38,4 +38,7 @@ env:
 
 # Publish a SNAPSHOT build for all commits to master.
 script:
+
+after_success:
+  - bash <(curl -s https://copilot.blackducksoftware.com/ci/travis/scripts/upload)
   - ./gradlew --continue verifyGoogleJavaFormat build connectedCheck && ./publish-snapshot-on-commit.sh
